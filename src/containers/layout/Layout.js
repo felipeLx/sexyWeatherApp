@@ -16,25 +16,26 @@ const Layout = () => {
         const apiData = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&APPID=${APIKEY}`)
             .then(res => res.json())
             .then(data => data);
-            if(lat && lon) {
-                setWeather({
-                    data: apiData,
-                    lat: apiData.lat,
-                    lon: apiData.lon,
-                    description: apiData.weather[0].description,
-                    temperature: (apiData.main.temp - 273.15).toFixed(2),
-                    error: ""
-                });
-            } else {
-                setWeather({
-                    data: '',
-                    city: '',
-                    country: '',
-                    description: '',
-                    temperature: '',
-                    error:"Not possible to identify the location"
-                });
-            }
+            console.log(apiData);
+            // if(lat && lon) {
+            //     setWeather({
+            //         data: apiData,
+            //         lat: apiData.lat,
+            //         lon: apiData.lon,
+            //         description: apiData.weather[0].description,
+            //         temperature: (apiData.main.temp - 273.15).toFixed(2),
+            //         error: ""
+            //     });
+            // } else {
+            //     setWeather({
+            //         data: '',
+            //         city: '',
+            //         country: '',
+            //         description: '',
+            //         temperature: '',
+            //         error:"Not possible to identify the location"
+            //     });
+            // }
         } catch(err) {
             alert(err.message);
         }
