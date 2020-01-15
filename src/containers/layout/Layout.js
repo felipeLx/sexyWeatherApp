@@ -21,7 +21,8 @@ const Layout = () => {
             .then(res => res.json())
             .then(data => data);
             console.log(apiData);
-            if(lat && lon) {
+            console.log(lat && lon);
+            if(lat && "," && lon) {
                 setScreenOpen(!screenOpen);
                 setWeather({
                     data: apiData,

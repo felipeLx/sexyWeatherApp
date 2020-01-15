@@ -4,28 +4,24 @@ import cloud from '../../assets/pictures/cloud.jpg';
 import rain from '../../assets/pictures/rain.jpg';
 import clear from '../../assets/pictures/clear.jpg';
 import snow from '../../assets/pictures/snow.jpg';
+import few from '../../assets/pictures/wfclouds.png';
 
-const PicturesWoman = props => {
-    let inputElement = [];
-
-    switch(props.elementType) {
-        case ('clear'):
-            inputElement = {clear};
-            break;
-        case('rain'):
-            inputElement = {rain};
-            break;
-        case('cloud'):
-            inputElement = {cloud};
-            break;
-        case('snow'):
-            inputElement = {snow};
-            break;
-        default:
-            inputElement = null;                
-    }
-
-    return {inputElement}
+export const picturesWclear = () => {
+    return <img src={clear} alt='clear' />;
 };
 
-export default PicturesWoman;
+export const picturesWrain = () => {
+    return <img src={rain} alt='rain' />;
+};
+
+export const picturesWcloud = () => {
+    return <img src={cloud} alt='cloud' />;
+};
+
+export const picturesWsnow = () => {
+    return <img src={snow} alt='snow' />;
+};
+
+export const picturesWclouds = () => {
+    return <img src={few} alt='few clouds' />;    
+};
