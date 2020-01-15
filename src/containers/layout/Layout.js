@@ -85,7 +85,7 @@ const Layout = () => {
                         wind={weather.wind}
                         local={weather.local}
                         error={weather.error}
-                        manWeather={genderHandler}
+                        manWeather={manWeather}
                     />}
             </div>
     );
