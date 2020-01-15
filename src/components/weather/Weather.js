@@ -8,7 +8,7 @@ import snow from '../../assets/pictures/snow.jpg';
 
 const keyWords = ['cloudy', 'clouds', 'cloud', 'overcast', 'clear', 'snow', 'rain'];
 
-const Weather = ({description, lat, lon, error, temperature, props}) => {
+const Weather = ({description, temp_min, temp_max, error, temperature, wind, local, humidity}) => {
     
     let weatherState = '';
 
@@ -34,12 +34,15 @@ const Weather = ({description, lat, lon, error, temperature, props}) => {
                 }
         }
 
-        // let cssName = ".Layout--" + weatherState.toString();
     return (
         <div className={classes.Layout}>
-            {lat && lon && <p>{lat}, {lon}</p>}
-            {temperature && <p>{temperature} ºC</p>}
+            {local && <h1>{local}</h1>}
+            {temperature && <p>Temp: {temperature} ºC</p>}
             {description && <p>Conditions: {description}</p>}
+            {temp_min && <p>Low: {temp_min} ºC</p>}
+            {temp_max && <p>High: {temp_max} ºC</p>}
+            {humidity && <p>Humidity: {humidity}%</p>}
+            {wind && <p>Wind: {wind * 3.6} Km/h</p>}
             {error && <p>{error}</p>}
             <div>
                 {description && matchValues()}
