@@ -6,20 +6,22 @@ import clear from '../../assets/pictures/mclear.png';
 import snow from '../../assets/pictures/msnow.jpeg';
 import few from '../../assets/pictures/mfclouds.png';
 
-export const picturesMan = props => {
+export const picturesMclear = () => {
+    return <img src={clear} alt='clear' />;
+};
 
-        switch(props.elementType) {
-            case ('clear'):
-                return <img src={clear} alt='clear' />;
-            case('rain'):
-                return <img src={rain} alt='rain' />;
-            case('cloud'):
-                return <img src={cloud} alt='cloud' />;
-            case('snow'):
-                return <img src={snow} alt='snow' />;
-            case('few'):
-                return <img src={few} alt='few clouds' />;    
-            default:
-                return null;                
-        }
+export const picturesMrain = () => {
+    return <img src={rain} alt='rain' />;
+};
+
+export const picturesMcloud = () => {
+    return <img src={cloud} alt='cloud' />;
+};
+
+export const picturesMsnow = () => {
+    return <img src={snow} alt='snow' />;
+};
+
+export const picturesMclouds = () => {
+    return <img src={few} alt='few clouds' />;    
 };

@@ -4,6 +4,7 @@ import Weather from '../../components/weather/Weather';
 import { geolocated } from "react-geolocated";
 import UserPosition from '../../components/position/UserPosition';
 import Button  from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 import classes from './Layout.module.css';
 
 const APIKEY = '92b3106c3e65a153964c760a41a887c9';
@@ -11,6 +12,7 @@ const APIKEY = '92b3106c3e65a153964c760a41a887c9';
 const Layout = () => {
     const [weather, setWeather] = useState([]);
     const [screenOpen, setScreenOpen] = useState(false);
+    const [manWeather, setManWeather] = useState(true);
 
     const {lat, lon} = UserPosition();
     
@@ -53,9 +55,25 @@ const Layout = () => {
         }
     };
 
+    const genderHandler = () => {
+        if(manWeather) {
+            setManWeather(false);
+        } else {
+            setManWeather(true);
+        }
+    }
+
     return (
             <div className={classes.Layout}>
                 <h3>SexyWeather App</h3>
+                <Form>
+                    <Form.Check 
+                        type="switch"
+                        id="custom-switch"
+                        label="Change weather gender"
+                        onChange={genderHandler}
+                    />
+                </Form>
                 <hr />
                 <Button variant="info" onClick={fetchData}>Check the weather condition</Button>
                     {screenOpen && <Weather 
@@ -67,6 +85,7 @@ const Layout = () => {
                         wind={weather.wind}
                         local={weather.local}
                         error={weather.error}
+                        manWeather={genderHandler}
                     />}
             </div>
     );

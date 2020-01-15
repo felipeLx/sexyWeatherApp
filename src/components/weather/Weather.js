@@ -3,29 +3,11 @@ import Table from 'react-bootstrap/Table';
 
 import classes from './Weather.module.css';
 import {picturesWclear, picturesWrain, picturesWcloud, picturesWsnow, picturesWclouds } from '../pictures/PicturesWoman.js';
-import {picturesMan} from '../pictures/PicturesWoman.js';
-// import cloud from '../../assets/pictures/cloud.jpg';
-// import rain from '../../assets/pictures/rain.jpg';
-// import clear from '../../assets/pictures/clear.jpg';
-// import snow from '../../assets/pictures/snow.jpg';
-// import few from '../../assets/pictures/wfcoulds.png'
-// import mcloud from '../../assets/pictures/mcould.png';
-// import mrain from '../../assets/pictures/mrain.png';
-// import mclear from '../../assets/pictures/mclear.png';
-// import msnow from '../../assets/pictures/msnow.jpeg';
-// import mfew from '../../assets/pictures/mfclouds.png';
+import {picturesMclear, picturesMrain, picturesMcloud, picturesMsnow, picturesMclouds } from '../pictures/PicturesMan.js';
 
-// const Woman = React.lazy(() => {
-//     return import('../pictures/PicturesWoman.js');
-// });
-// const Man = React.lazy(() => {
-//     return import('../pictures/PicturesMan.js');
-// });
 const keyWords = ['cloudy', 'few', 'cloud', 'overcast', 'clear', 'snow', 'rain'];
 
-const Weather = ({description, temp_min, temp_max, error, temperature, wind, local, humidity}) => {
-    const [manWeather, setManWeather] = useState(true);
-    
+const Weather = ({description, temp_min, temp_max, error, temperature, wind, local, humidity, manWeather}) => {
     let weatherState = '';
 
     const matchValues = () => {
@@ -36,23 +18,37 @@ const Weather = ({description, temp_min, temp_max, error, temperature, wind, loc
                 } 
             }
             if(manWeather) {
-            console.log(weatherState);
                 switch(weatherState) {
                     case ('clear'):
-                        return {picturesWclear};
+                        return picturesWclear();
                     case('rain'):
-                        return {picturesWrain};
+                        return picturesWrain();
                     case('cloud'):
-                        return {picturesWcloud};
+                        return picturesWcloud();
                     case('snow'):
-                        return {picturesWsnow};
+                        return picturesWsnow();
                     case('few'):
-                        return {picturesWclouds};
+                        return picturesWclouds();
                     default:
                         return null;
-                        }
+                     }
+            } else {
+                switch(weatherState) {
+                    case ('clear'):
+                        return picturesMclear();
+                    case('rain'):
+                        return picturesMrain();
+                    case('cloud'):
+                        return picturesMcloud();
+                    case('snow'):
+                        return picturesMsnow();
+                    case('few'):
+                        return picturesMclouds();
+                    default:
+                        return null;
+               }
+            }
         }
-    }
 
     return (
         <div className={classes.Layout__&&`${weatherState}`}>
@@ -81,9 +77,7 @@ const Weather = ({description, temp_min, temp_max, error, temperature, wind, loc
                 </tbody>
             </Table>
             {error && <p>{error}</p>}
-            <div>
                 {description && matchValues()}
-            </div>
         </div>
         );
 };
