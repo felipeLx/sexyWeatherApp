@@ -2,28 +2,22 @@ import React, { useState } from 'react';
 
 import Weather from '../../components/weather/Weather';
 import { geolocated } from "react-geolocated";
+import UserPosition from '../../components/position/UserPosition';
+import Button  from 'react-bootstrap/Button';
 import classes from './Layout.module.css';
-import { GAPI } from "../../../request";
 
-const Layout = props => {
+const APIKEY = '92b3106c3e65a153964c760a41a887c9';
+
+const Layout = () => {
     const [weather, setWeather] = useState([]);
     const [screenOpen, setScreenOpen] = useState(false);
-    let lat = '';
-    let lon = '';
+
+    const {lat, lon} = UserPosition();
     
-    async function fetchData(e) {
+    const fetchData = async(e) => {
         e.preventDefault();
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(getPosition);
-          }
-          function getPosition(position) {
-              lat = position.coords.latitude;
-              lon = position.coords.longitude;
-            console.log(position.coords.latitude, position.coords.longitude);
-          }
-        
         try{
-        const apiData = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&APPID=${GAPI}`)
+        const apiData = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&APPID=${APIKEY}`)
             .then(res => res.json())
             .then(data => data);
             console.log(apiData);
@@ -60,8 +54,9 @@ const Layout = props => {
 
     return (
             <div className={classes.Layout}>
-                <button onClick={fetchData}>Check the weather condition</button>
+                <h3>SexyWeather App</h3>
                 <hr />
+                <Button variant="info" onClick={fetchData}>Check the weather condition</Button>
                     {screenOpen && <Weather 
                         description={weather.description}
                         temperature={weather.temperature}

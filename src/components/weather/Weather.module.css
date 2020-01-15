@@ -1,6 +1,5 @@
 .Layout {
     border-radius: 10px;
-    border: 2px;
     font-family: Helvetica;
     justify-content: space-between;
     max-width: 100%;
@@ -9,22 +8,22 @@
     
   }
   
-  .Layout__clear {
+  .Layout__clear img {
     border: 5px;
     border-color: #f53e3e;
   }
   
-  .Layout__rain {
+  .Layout__rain img {
     border: 5px;
     border-color: rgb(30, 240, 187);
   }
   
-  .Layout__clouds {
+  .Layout__clouds img {
     border: 5px;
-    border-color: rgb(94, 92, 92);  
+    border-color: black;  
   }
   
-  .Layout__snow {
+  .Layout__snow img {
     border: 5px;
     border-color: #ffffff;  
   }
