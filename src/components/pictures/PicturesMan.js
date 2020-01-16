@@ -5,6 +5,8 @@ import rain from '../../assets/pictures/mrain.png';
 import clear from '../../assets/pictures/mclear.png';
 import snow from '../../assets/pictures/msnow.jpeg';
 import few from '../../assets/pictures/mfclouds.png';
+import drizzle from '../../assets/pictures/mdrizzle.jpeg';
+import thunder from '../../assets/pictures/mthunder.jpg';
 
 export const picturesMclear = () => {
     return <img src={clear} alt='clear' />;
@@ -24,4 +26,12 @@ export const picturesMsnow = () => {
 
 export const picturesMclouds = () => {
     return <img src={few} alt='few clouds' />;    
+};
+
+export const picturesMdrizzle = () => {
+    return <img src={drizzle} alt='drizzle' />;    
+};
+
+export const picturesMthunder = () => {
+    return <img src={thunder} alt='thunder' />;    
 };

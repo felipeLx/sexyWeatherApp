@@ -33,7 +33,7 @@ const Layout = () => {
                     temp_min: (apiData.main.temp_min - 273.15).toFixed(2),
                     temp_max: (apiData.main.temp_max - 273.15).toFixed(2),
                     humidity: apiData.main.humidity,
-                    wind: apiData.wind.speed,
+                    wind: (apiData.wind.speed * 3.6).toFixed(2),
                     local: apiData.name,
                     error: ""
                 });

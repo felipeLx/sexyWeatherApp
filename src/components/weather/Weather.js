@@ -2,10 +2,10 @@ import React from 'react';
 import Table from 'react-bootstrap/Table';
 
 import classes from './Weather.module.css';
-import {picturesWclear, picturesWrain, picturesWcloud, picturesWsnow, picturesWclouds } from '../pictures/PicturesWoman.js';
-import {picturesMclear, picturesMrain, picturesMcloud, picturesMsnow, picturesMclouds } from '../pictures/PicturesMan.js';
+import {picturesWclear, picturesWrain, picturesWcloud, picturesWsnow, picturesWclouds, picturesWdrizzle, picturesWthunder } from '../pictures/PicturesWoman.js';
+import {picturesMclear, picturesMrain, picturesMcloud, picturesMsnow, picturesMclouds, picturesMdrizzle, picturesMthunder } from '../pictures/PicturesMan.js';
 
-const keyWords = ['cloudy', 'few', 'cloud', 'overcast', 'clear', 'snow', 'rain'];
+const keyWords = ['cloudy', 'clouds', 'few', 'cloud', 'overcast', 'clear', 'snow', 'rain', 'drizzle', 'thunder'];
 
 const Weather = ({description, temp_min, temp_max, error, temperature, wind, local, humidity, manWeather}) => {
     let weatherState = '';
@@ -23,12 +23,18 @@ const Weather = ({description, temp_min, temp_max, error, temperature, wind, loc
                         return picturesWclear();
                     case('rain'):
                         return picturesWrain();
-                    case('cloud'):
+                    case('clouds'):
                         return picturesWcloud();
                     case('snow'):
                         return picturesWsnow();
                     case('few'):
                         return picturesWclouds();
+                    case('cloud'):
+                        return picturesWclouds();
+                    case('thunder'):
+                        return picturesWthunder();
+                    case('drizzle'):
+                        return picturesWdrizzle();
                     default:
                         return null;
                      }
@@ -38,12 +44,18 @@ const Weather = ({description, temp_min, temp_max, error, temperature, wind, loc
                         return picturesMclear();
                     case('rain'):
                         return picturesMrain();
-                    case('cloud'):
+                    case('clouds'):
                         return picturesMcloud();
                     case('snow'):
                         return picturesMsnow();
                     case('few'):
                         return picturesMclouds();
+                    case('cloud'):
+                        return picturesMclouds();
+                    case('thunder'):
+                        return picturesMthunder();
+                    case('drizzle'):
+                        return picturesMdrizzle();
                     default:
                         return null;
                }
@@ -72,7 +84,7 @@ const Weather = ({description, temp_min, temp_max, error, temperature, wind, loc
                         {humidity && <td>Humidity: {humidity}%</td>}
                     </tr>    
                     <tr>
-                        {wind && <td>Wind: {wind * 3.6} Km/h</td>}
+                        {wind && <td>Wind: {wind} Km/h</td>}
                     </tr>    
                 </tbody>
             </Table>
